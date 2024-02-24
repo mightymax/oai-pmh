@@ -18,3 +18,5 @@ docker compose up
 ```
 
 This will provide a website on port 8080 on the ip of your docker host with a running OAI-PMH DataProvider.
+
+If you want to see the raw XML output, add `$no_xslt = true` to your configuration.

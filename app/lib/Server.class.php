@@ -81,8 +81,10 @@ class Server {
     // create xml
     $this->response_dom = new \DOMDocument ( "1.0", "utf-8" );
     //stylesheet
-    $xslt = $this->response_dom->createProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"layout/oai2html.xsl\"");    
-    $this->response_dom->appendChild($xslt);
+    if (true !== $this->configuration->get('no_xslt')) {
+      $xslt = $this->response_dom->createProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"layout/oai2html.xsl\"");    
+      $this->response_dom->appendChild($xslt);
+    } 
     //main xml  
     $this->response_oaipmh = $this->response_dom->createElement ( "OAI-PMH" );
     $attribute_xmlns = $this->response_dom->createAttribute ( "xmlns" );
