@@ -87,10 +87,10 @@ class Demo extends \OAIPMH\DataProviderMysql {
   protected function getIdentifiersListSql($cursor, $stepSize, $metadataPrefix, $set, $from, $until) {
     list ( $binds, $conditions ) = $this->createItemsConditions ( $set, $from, $until );
     $sql = "SELECT
-                `item`.`id` AS `" . self::PREFIX_HEADER . "identifier`,
+                CAST(`item`.`id` AS CHAR) AS `" . self::PREFIX_HEADER . "identifier`,
                 UNIX_TIMESTAMP(`item`.`changed`) AS `" . self::PREFIX_HEADER . "datestamp`,
                 `set`.`spec` AS `" . self::PREFIX_HEADER . "setSpec`,
-                `item`.`identifier` AS `" . self::PREFIX_METADATA . "identifier`
+                CAST(`item`.`identifier` AS CHAR) AS `" . self::PREFIX_METADATA . "identifier`
               FROM `item`
               LEFT JOIN `set`
               ON `item`.`set_id` = `set`.`id`
@@ -110,10 +110,10 @@ class Demo extends \OAIPMH\DataProviderMysql {
     list ( $binds, $conditions ) = $this->createItemsConditions ( $set, $from, $until );
     if ($metadataPrefix == MetadataFormatDC::METADATAPREFIX) {
       $sql = "SELECT
-                `item`.`id` AS `" . self::PREFIX_HEADER . "identifier`,
+                CAST(`item`.`id` AS CHAR) AS `" . self::PREFIX_HEADER . "identifier`,
                 UNIX_TIMESTAMP(`item`.`changed`) AS `" . self::PREFIX_HEADER . "datestamp`,
                 `set`.`spec` AS `" . self::PREFIX_HEADER . "setSpec`,
-                `item`.`identifier` AS `" . self::PREFIX_METADATA . "identifier`,
+                CAST(`item`.`identifier` AS CHAR) AS `" . self::PREFIX_METADATA . "identifier`,
                 `item`.`title` AS `" . self::PREFIX_METADATA . "title`,
                 `item`.`relation` AS `" . self::PREFIX_METADATA . "relation`
               FROM `item`
@@ -140,7 +140,7 @@ class Demo extends \OAIPMH\DataProviderMysql {
     );
     if ($metadataPrefix == MetadataFormatDC::METADATAPREFIX) {
       $sql = "SELECT
-                `item`.`id` AS `" . self::PREFIX_HEADER . "identifier`,
+                CAST(`item`.`id` AS CHAR) AS `" . self::PREFIX_HEADER . "identifier`,
                 UNIX_TIMESTAMP(`item`.`changed`) AS `" . self::PREFIX_HEADER . "datestamp`,
                 `set`.`spec` AS `" . self::PREFIX_HEADER . "setSpec`,
                 `item`.`identifier` AS `" . self::PREFIX_METADATA . "identifier`,

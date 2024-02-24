@@ -6,6 +6,7 @@ class Configuration {
   
   private $config;
   private $filename;
+  public $configTimestamp;
   
   public function __construct($file) {
     $this->filename = $file;

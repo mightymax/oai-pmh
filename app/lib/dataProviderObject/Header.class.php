@@ -5,6 +5,7 @@ namespace DataProviderObject;
 class Header extends DataProviderObject {
   private $identifier;
   private $datestamp;
+  public $setSpec;
   const HEADER = "header";
   const HEADER_IDENTIFIER = "identifier";
   const HEADER_DATESTAMP = "datestamp";
@@ -14,12 +15,13 @@ class Header extends DataProviderObject {
       if (isset ( $data [self::HEADER_IDENTIFIER] ) && ! is_null ( $data [self::HEADER_IDENTIFIER] ) && is_string ( $data [self::HEADER_IDENTIFIER] )) {
         $this->identifier = $data [self::HEADER_IDENTIFIER];
       } else {
-        die ( "no " . self::HEADER_IDENTIFIER );
+        echo '<pre>'; var_dump($data );
+        die ( "17 no " . self::HEADER_IDENTIFIER );
       }
       if (isset ( $data [self::HEADER_DATESTAMP] ) && ! is_null ( $data [self::HEADER_DATESTAMP] ) && (is_string ( $data [self::HEADER_DATESTAMP] ) || is_numeric ( $data [self::HEADER_DATESTAMP] ))) {
         $this->datestamp = $data [self::HEADER_DATESTAMP];
       } else {
-        die ( "no " . self::HEADER_DATESTAMP );
+        die ( "22 no " . self::HEADER_DATESTAMP );
       }
       $this->setSpec = array ();
       if (isset ( $data [self::HEADER_SETSPEC] ) && ! is_null ( $data [self::HEADER_SETSPEC] )) {

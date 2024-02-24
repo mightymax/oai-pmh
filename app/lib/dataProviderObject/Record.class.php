@@ -7,6 +7,7 @@ class Record extends DataProviderObject {
   private $metadataPrefix;
   private $header;
   private $metadata;
+  public $metadataFormat;
   const RECORD = "record";  
   public function __construct() {
     $this->identifier = null;

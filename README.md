@@ -11,10 +11,10 @@ To use the system with your own resources, a specific [DataProviderModule](https
 
 To build and run the Docker image
 
-```console
-docker build -t oai-pmh https://raw.githubusercontent.com/meertensinstituut/oai-pmh/master/docker/Dockerfile
-docker run -t -i -p 8080:80 --name oai-pmh oai-pmh
+```bash
+git clone git@github.com:mightymax/oai-pmh.git
+cd oai-pmh
+docker compose up
 ```
 
-This will provide a website on port 8080 on the ip of your docker host with a running OAI-PMH DataProvider on an also included MySQL demo database `oai-pmh` with username `demo` and password `demo`.
-
+This will provide a website on port 8080 on the ip of your docker host with a running OAI-PMH DataProvider.
